@@ -68,3 +68,21 @@ public class JpaMain {
 // 즉, entityManager는 이 인스턴스의 메모리 주소를 가리키고 있으며, 이를 통해 인스턴스에 접근할 수 있게 됩니다.
 //
 //간단히 말해서, "인스턴스를 참조한다"는 말은 프로그래밍에서 특정 변수가 메모리 상의 객체(인스턴스)를 가리키고, 그 객체를 사용할 수 있게 된다는 것을 의미합니다.
+
+
+
+//코드는 JPA (Java Persistence API)를 사용하여 `EntityManager` 객체를 생성하는 과정을 나타냅니다.
+//
+//### EntityManagerFactory
+//- `EntityManagerFactory`는 `EntityManager` 인스턴스를 생성하는 공장(factory) 역할을 합니다.
+//- `Persistence.createEntityManagerFactory("hello")` 호출은 `hello`라는 이름의 persistence unit(지속성 유닛) 설정에 기반하여 `EntityManagerFactory` 인스턴스를 생성합니다.
+//- 이 공장을 통해 필요할 때마다 `EntityManager` 인스턴스를 생성할 수 있습니다.
+//
+//### EntityManager
+//- `EntityManager`는 JPA에서 엔티티를 관리하고 데이터베이스 트랜잭션을 처리하는 핵심 인터페이스입니다.
+//- `emf.createEntityManager()` 호출은 `EntityManagerFactory` 인스턴스(`emf`)를 사용하여 `EntityManager` 인스턴스(`em`)를 생성합니다.
+//- 생성된 `EntityManager` (`em`)는 데이터베이스에 대한 CRUD (Create, Read, Update, Delete) 작업을 수행하는 데 사용됩니다.
+//
+//### 요약
+//- 코드는 먼저 `EntityManagerFactory` 인스턴스를 생성하고 (`emf`), 이를 통해 `EntityManager` 인스턴스 (`em`)를 생성합니다.
+//- `em` 객체는 데이터베이스와의 상호작용을 관리하며, 데이터베이스 작업을 수행하기 위한 주요 인터페이스 역할을 합니다.
