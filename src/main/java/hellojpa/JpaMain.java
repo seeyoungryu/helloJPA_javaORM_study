@@ -21,27 +21,32 @@ public class JpaMain {
         // 실행코드
         //엔티티 관리
         // 여러 Member 객체 생성 및 영속화
-        Member member1 = new Member();
-        member1.setId(2L);
-        member1.setName("HelloB");
-        em.persist(member1);
 
-        Member member2 = new Member();
-        member2.setId(3L);
-        member2.setName("HelloC");
-        em.persist(member2);
+        try {
+            Member member1 = new Member();
+            member1.setId(2L);
+            member1.setName("HelloB");
+            em.persist(member1);
 
-        Member member3 = new Member();
-        member3.setId(4L);
-        member3.setName("HelloD");
-        em.persist(member3);
+            Member member2 = new Member();
+            member2.setId(3L);
+            member2.setName("HelloC");
+            em.persist(member2);
 
-        //트랜잭션 커밋
-        tx.commit();
+            Member member3 = new Member();
+            member3.setId(4L);
+            member3.setName("HelloD");
+            em.persist(member3);
 
-        // 닫아주기 (자원 해제)
-        em.close();
-        emf.close();
+            //트랜잭션 커밋
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();      //엔티티매니저가 내부적으로 데이터베이스 커넥션을 물고 동작하기 때문에 닫아주는게 중요하다!
+        }
+
+        emf.close(); //전체애플리케이션 종료시 entitymanagerfactory 닫아준다
         ;
     }
 }
